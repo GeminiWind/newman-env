@@ -1,0 +1,29 @@
+{
+  "name": "newman-env",
+  "version": "0.0.1",
+  "description": "Command-line utility for update Postman Environment",
+  "homepage": "https://github.com/GeminiWind/newman-env",
+  "bugs": "https://github.com/GeminiWind/newman-env/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GeminiWind/newman-env.git"
+  },
+  "keywords": [
+    "newman-env",
+    "newman",
+    "postman"
+  ],
+  "bin": {
+    "newman-env": "./bin/newman-env.js"
+  },
+  "preferGlobal": true,
+  "author": "Gemini <gemini.wind285@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "app-root-dir": "^1.0.2",
+    "commander": "^2.20.0"
+  },
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
