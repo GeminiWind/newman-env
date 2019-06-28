@@ -1,3 +1,7 @@
+# **newman-env**
+
+Newman-env is a command-line helper for newman. It allows you to update environment variables directly from the command-line. It is very helpful in the case you deployed success your application and need to update your corresponding environment variable in Postman Environment file to continue integration/performance/stress test on CI/CD.
+
 ## Getting Started
 
 ### Installation
@@ -11,25 +15,21 @@ $ npm install newman-env
 
 #### Using `newman-env cli`
 
-The `-e` run command allows you to specify a environment as a source to update. You can easily export your Postman Collection as a json file from the Postman App.
+The `newman-env run` command allows you to specify a environment to be update. You can easily export your Postman Environment as a json file from the Postman App and run it using Newman.
 
 ```
-$ newman-env run -e postman-environments.json -v endpoint=http://localhost:3000,email=gemini.wind285@gmail.com
+$ newman-env run postman-environments.json --env-var endpoint=http://localhost:3000 --env-var email=gemini.wind285@gmail.com
 ```
 
 
 ## Command Line Option
 
-#### ```newman-env run [options]```
+#### ```newman-env run <environment-file-source> [options]```
 
-- ```-e <environment>, --environment<environment>```
+- ```-o <path>, --output<path>```
 
-Specify an environment file path. Environments provide a set of variables that one can use within collections.
+Specify an output environment file path after updating. Default will be overwrite the current specified environment file.
 
-- ```-o <output>, --output<output>```
+- ```--env-var<environment-variable-name>=<environment-variable-value>```
 
-Specify an output environment file path after updating.
-
-- ```-v <variables>, --variables<variables>```
-
-Specify the list of environment variable you want to update. They shoud be seperated by ```','``` (without space).
+Allows the specification of global variables via the command line, in a key=value format. Multiple CLI environment variables can be added by using ```--env-var``` multiple times, like so: ```--env-var "foo=bar" --env-var "alpha=beta"```.

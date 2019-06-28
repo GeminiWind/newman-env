@@ -12,6 +12,8 @@ const updateEnv = (envPath, destinationPath, replaceableEnvironments) => {
   const updatedEnvironments  = currentEnvironments
     .map(env => {
       if (replaceableEnvironments[[env.key]]) {
+        console.log(`SET ${env.key}: ${env.value}`);
+
         return {
           ...env,
           value: replaceableEnvironments[[env.key]]
@@ -23,7 +25,11 @@ const updateEnv = (envPath, destinationPath, replaceableEnvironments) => {
 
   content.values = updatedEnvironments;
 
+  console.log(`Writing environments to file: ${destinationPath} ...`);
+
   fs.writeFileSync(destinationPath, JSON.stringify(content));
+
+  console.log('Done.');
 }
 
 module.exports = updateEnv;
