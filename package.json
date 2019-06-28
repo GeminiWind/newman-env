@@ -1,6 +1,6 @@
 {
   "name": "newman-env",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Command-line utility for update Postman Environment",
   "homepage": "https://github.com/GeminiWind/newman-env",
   "bugs": "https://github.com/GeminiWind/newman-env/issues",

@@ -11,3 +11,10 @@ jobs:
       script: yarn test
     - stage:  coverage
       script: yarn test:coverage
+    - stage: publish
+      deploy:
+        provider: script
+        script: "cp .npmrc.template $HOME/.npmrc && npm publish"
+        skip_cleanup: true
+        on:
+          tags: true
