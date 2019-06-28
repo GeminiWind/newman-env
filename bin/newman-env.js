@@ -32,5 +32,5 @@ program.on('command:*', (command) => {
   program.help();
 });
 
-  
+
 program.parse(process.argv);
