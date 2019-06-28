@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const run = (envPath, destinationPath, replaceableEnvironments) => {
   if (!fs.existsSync(envPath)) {
-    throw new Error('Your env file does not exists. Please check again');
+    throw new Error('Your env file does not exist. Please check again');
   }
 
   const content = JSON.parse(fs.readFileSync(envPath));
@@ -12,7 +12,7 @@ const run = (envPath, destinationPath, replaceableEnvironments) => {
   const updatedEnvironments  = currentEnvironments
     .map(env => {
       if (replaceableEnvironments[[env.key]]) {
-        console.log(`SET ${env.key}: ${env.value}`);
+        console.log(`SET ${env.key}: ${replaceableEnvironments[[env.key]]}`);
 
         return {
           ...env,
@@ -24,10 +24,8 @@ const run = (envPath, destinationPath, replaceableEnvironments) => {
   });
 
   content.values = updatedEnvironments;
-  
-  console.log(destinationPath, 'lol');
 
-  console.log(`Writing environments to file: ${destinationPath} ...`);
+  console.log(`Writing environments to file: ${destinationPath}`);
 
   fs.writeFileSync(destinationPath, JSON.stringify(content));
 
