@@ -2,7 +2,7 @@
 const path = require('path');
 const program = require('commander');
 const rootDir = require('app-root-dir');
-const updateEnv = require('../src');
+const newmanEnv = require('../src');
 const utils = require('../src/utils');
 
 const version = require('../package.json').version;
@@ -19,7 +19,7 @@ program
     const sourcePath = path.resolve(dir, environment);
     const destinationPath = output ? path.resolve(dir, output) : sourcePath;
 
-    updateEnv(sourcePath, destinationPath, envVar);
+    newmanEnv.run(sourcePath, destinationPath, envVar);
   });
 
 program.on('--help', function () {

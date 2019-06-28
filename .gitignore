@@ -20,3 +20,6 @@ log/*
 .nyc_output
 coverage
 .env.production
+
+tests/results/*
+!tests/results/.gitkeep

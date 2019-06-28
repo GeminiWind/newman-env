@@ -19,6 +19,10 @@
   "preferGlobal": true,
   "author": "Gemini <gemini.wind285@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "yarn jest",
+    "test:coverage": "yarn jest --coverage"
+  },
   "dependencies": {
     "app-root-dir": "^1.0.2",
     "commander": "^2.20.0"
