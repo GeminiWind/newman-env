@@ -32,4 +32,4 @@ Specify an output environment file path after updating. Default will be overwrit
 
 - ```--env-var<environment-variable-name>=<environment-variable-value>```
 
-Allows the specification of global variables via the command line, in a key=value format. Multiple CLI environment variables can be added by using ```--env-var``` multiple times, like so: ```--env-var "foo=bar" --env-var "alpha=beta"```.
+Allows the specification of environment variables via the command line, in a key=value format. Multiple CLI environment variables can be added by using ```--env-var``` multiple times, like so: ```--env-var "foo=bar" --env-var "alpha=beta"```.

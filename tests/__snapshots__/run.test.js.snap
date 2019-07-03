@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Run test throw error if specified environment file does not exist 1`] = `[Error: Your env file does not exist. Please check again]`;
+
+exports[`Run test throw error when the output path file does not exist 1`] = `[Error: Error when writing output file. Please check output path.]`;
