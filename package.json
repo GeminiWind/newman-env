@@ -21,7 +21,8 @@
   "license": "MIT",
   "scripts": {
     "test": "yarn jest",
-    "test:coverage": "yarn jest --coverage"
+    "test:coverage": "yarn jest --coverage",
+    "version": "yarn version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md"
   },
   "dependencies": {
     "app-root-dir": "^1.0.2",
