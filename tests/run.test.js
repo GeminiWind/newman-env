@@ -22,6 +22,28 @@ describe('Run test', () => {
     expect(error).toMatchSnapshot();
   });
 
+  it('throw error when the output path file does not exist', () => {
+    const environment = path.resolve(__dirname, './fixtures/sample-postman-environment.json');
+    const output = path.resolve(__dirname, './dir-does-not-exist/output-1.json');
+
+    let error;
+
+    try {
+      run(environment, output, {
+        endpoint: 'http://localhost:3000',
+      })
+    } catch (e) {
+      error = e;
+    };
+
+    const isOutputExist = fs.existsSync(output);
+
+    expect(isOutputExist).toBe(false);
+
+    expect(error).toBeDefined();
+    expect(error).toMatchSnapshot();
+  });
+
   it('return new updated environment variable file with specified environment file is valid and output is valid', () => {
     const environment = path.resolve(__dirname, './fixtures/sample-postman-environment.json');
     const output = path.resolve(__dirname, './results/output-1.json');

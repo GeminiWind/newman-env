@@ -27,7 +27,12 @@ const run = (envPath, destinationPath, replaceableEnvironments) => {
 
   console.log(`Writing environments to file: ${destinationPath}`);
 
-  fs.writeFileSync(destinationPath, JSON.stringify(content));
+  try {
+    fs.writeFileSync(destinationPath, JSON.stringify(content));
+  } catch (error) {
+    throw new Error('Error when writing output file. Please check output path.')
+  }
+
 
   console.log('Done.');
 }
