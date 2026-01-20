@@ -1,6 +1,6 @@
 {
   "name": "newman-env",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Command-line utility for update Postman Environment",
   "homepage": "https://github.com/GeminiWind/newman-env",
   "bugs": "https://github.com/GeminiWind/newman-env/issues",
@@ -31,6 +31,7 @@
     "build": "tsc -p tsconfig.json",
     "test": "yarn jest",
     "test:coverage": "yarn jest --coverage",
+    "prepublishOnly": "yarn build",
     "version": "yarn version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md"
   },
   "dependencies": {
