@@ -1,25 +1,30 @@
 #!/usr/bin/env node
-const path = require('path');
-const program = require('commander');
-const rootDir = require('app-root-dir');
-const newmanEnv = require('../src');
-const utils = require('../src/utils');
+import * as path from 'path';
 
-const version = require('../package.json').version;
+import program from 'commander';
+import rootDir from 'app-root-dir';
+import { run } from 'src';
+import { cast } from 'src/utils';
+import { version } from '../package.json';
 
 program
   .version(version, '-v, --version')
   .name('newman-env')
   .command('run <environment>')
   .option('-o, --output [path]', 'Specify Path to Postman Environment output.')
-  .option('--env-var <value>', 'Allows the specification of environment variables via the command line, in a key=value format', utils.cast.memoizeKeyVal, {})
-  .action((environment, { output, envVar }) => {
+  .option(
+    '--env-var <value>',
+    'Allows the specification of environment variables via the command line, in a key=value format',
+    cast.memoizeKeyVal,
+    {}
+  )
+  .action((environment: string, { output, envVar }: { output?: string; envVar: Record<string, string | undefined> }) => {
     const dir = rootDir.get();
 
     const sourcePath = path.resolve(dir, environment);
     const destinationPath = output ? path.resolve(dir, output) : sourcePath;
 
-    newmanEnv.run(sourcePath, destinationPath, envVar);
+    run(sourcePath, destinationPath, envVar);
   });
 
 program.on('--help', function () {
@@ -27,10 +32,9 @@ program.on('--help', function () {
   console.info('  newman-env [command] -h');
 });
 
-program.on('command:*', (command) => {
+program.on('command:*', (command: string) => {
   console.error(`error: invalid command \`${command}\`\n`);
   program.help();
 });
-
 
 program.parse(process.argv);

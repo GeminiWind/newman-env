@@ -1,35 +1,51 @@
 # **newman-env**
 
-Newman-env is a command-line helper for newman. It allows you to update environment variables directly from the command-line. It is very helpful in the case you deployed success your application and need to update your corresponding environment variable in Postman Environment file to continue integration/performance/stress test on CI/CD.
+Command-line helper for updating Postman environment variables before running Newman. Use it to patch values in an exported Postman environment JSON so your CI/CD runs always target the right endpoints.
 
-## Getting Started
+## Features
 
-### Installation
-The easiest way to install `newman-env` is using NPM. If you have Node.js installed, it is most likely that you have NPM installed as well.
+- Update one or more environment variables from the CLI.
+- Overwrite the source file or write to a separate output path.
+- Leaves values untouched when a key does not exist in the environment file.
 
-```
-$ npm install newman-env
-```
-
-### Usage
-
-#### Using `newman-env cli`
-
-The `newman-env run` command allows you to specify a environment to be update. You can easily export your Postman Environment as a json file from the Postman App and run it using Newman.
+## Installation
 
 ```
-$ newman-env run postman-environments.json --env-var endpoint=http://localhost:3000 --env-var email=gemini.wind285@gmail.com
+npm install -g newman-env
 ```
 
+## Usage
 
-## Command Line Option
+Export your Postman Environment as JSON, then run:
 
-#### ```newman-env run <environment-file-source> [options]```
+```
+newman-env run postman-environments.json --env-var endpoint=http://localhost:3000 --env-var email=gemini.wind285@gmail.com
+```
 
-- ```-o <path>, --output<path>```
+To write to a new file:
 
-Specify an output environment file path after updating. Default will be overwrite the current specified environment file.
+```
+newman-env run postman-environments.json -o postman-environments.updated.json --env-var endpoint=http://localhost:3000
+```
 
-- ```--env-var<environment-variable-name>=<environment-variable-value>```
+## Command
 
-Allows the specification of environment variables via the command line, in a key=value format. Multiple CLI environment variables can be added by using ```--env-var``` multiple times, like so: ```--env-var "foo=bar" --env-var "alpha=beta"```.
+```
+newman-env run <environment-file> [options]
+```
+
+### Options
+
+- `-o, --output [path]` Specify an output environment file path. Defaults to overwriting the input file.
+- `--env-var <key=value>` Set an environment variable. Repeat for multiple values.
+
+## Notes
+
+- The input file must be a valid Postman environment JSON with a `values` array of `{ key, value }` entries.
+- If the output directory does not exist, the command fails.
+
+## Development
+
+```
+yarn test
+```

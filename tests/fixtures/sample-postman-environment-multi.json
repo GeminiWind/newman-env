@@ -1,0 +1,24 @@
+{
+  "id": "77688407-87de-4e1b-979b-3a4a13f3a160",
+  "name": "Heligram Environment",
+  "values": [
+    {
+      "key": "endpoint",
+      "value": "https://localhost:2000",
+      "enabled": true
+    },
+    {
+      "key": "token",
+      "value": "token-old",
+      "enabled": true
+    },
+    {
+      "key": "email",
+      "value": "old@example.com",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2019-06-20T10:46:50.735Z",
+  "_postman_exported_using": "Postman/7.2.0"
+}

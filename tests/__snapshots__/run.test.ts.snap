@@ -3,3 +3,5 @@
 exports[`Run test throw error if specified environment file does not exist 1`] = `[Error: Your env file does not exist. Please check again]`;
 
 exports[`Run test throw error when the output path file does not exist 1`] = `[Error: Error when writing output file. Please check output path.]`;
+
+exports[`Run test throw error when environment file content is invalid JSON 1`] = `[SyntaxError: Expected ',' or ']' after array element in JSON at position 71]`;

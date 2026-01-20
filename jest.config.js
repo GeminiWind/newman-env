@@ -3,7 +3,7 @@ module.exports = {
   verbose: true,
   roots: ['tests'],
   collectCoverageFrom: [
-    'src/**/*.js',
+    'src/**/*.ts',
     '!**/node_modules/**',
   ],
   coverageThreshold: {
@@ -15,10 +15,12 @@ module.exports = {
     }
   },
   testMatch: [
-    '**/tests/**/*.js',
-    '**/?(*.)+(test).js',
+    '**/tests/**/*.ts',
+    '**/?(*.)+(test).ts',
   ],
-  transform: {
-    '^.+\\.js$': 'babel-jest',
+  preset: 'ts-jest',
+  moduleFileExtensions: ['ts', 'js', 'json'],
+  moduleNameMapper: {
+    '^src/(.*)$': '<rootDir>/src/$1',
   },
 };

@@ -1,5 +1,5 @@
-const cast = {
-  memoizeKeyVal: (val, memo) => {
+export const cast = {
+  memoizeKeyVal: (val: string, memo: Record<string, string | undefined>) => {
     const isValMatchTemplate = val.includes('=');
 
     if (isValMatchTemplate) {
@@ -11,8 +11,4 @@ const cast = {
 
     return memo;
   },
-}
-
-module.exports = {
-  cast,
-}
+};

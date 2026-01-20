@@ -14,12 +14,21 @@
     "postman"
   ],
   "bin": {
-    "newman-env": "./bin/newman-env.js"
+    "newman-env": "./dist/bin/newman-env.js"
   },
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "preferGlobal": true,
   "author": "Gemini <gemini.wind285@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "tsc -p tsconfig.json",
     "test": "yarn jest",
     "test:coverage": "yarn jest --coverage",
     "version": "yarn version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md"
@@ -29,6 +38,11 @@
     "commander": "^2.20.0"
   },
   "devDependencies": {
-    "jest": "^24.8.0"
+    "@types/app-root-dir": "^0.1.4",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.10",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.3",
+    "typescript": "^5.5.3"
   }
 }
